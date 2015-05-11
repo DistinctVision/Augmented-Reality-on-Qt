@@ -1,0 +1,22 @@
+<RCC>
+    <qresource prefix="/">
+        <file>GameData/CompanionCube.jpg</file>
+        <file>GameData/cube.3DS</file>
+        <file>GameData/ship.3DS</file>
+        <file>GameData/Cloud.jpg</file>
+        <file>GameData/SmokeParticle_0.jpg</file>
+        <file>GameData/SmokeParticle_1.jpg</file>
+        <file>GameData/SmokeParticle_2.jpg</file>
+        <file>GameData/SmokeParticle_3.jpg</file>
+        <file>GameData/Glow.png</file>
+        <file>GameData/Sun.jpg</file>
+        <file>GameData/Mercury.jpg</file>
+        <file>GameData/Venus.jpg</file>
+        <file>GameData/Earth.png</file>
+        <file>GameData/EarthCloud.png</file>
+        <file>GameData/Mars.jpg</file>
+        <file>GameData/eye.jpg</file>
+        <file>GameData/petr.3DS</file>
+        <file>GameData/back.png</file>
+    </qresource>
+</RCC>

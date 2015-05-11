@@ -1,0 +1,26 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Shaders/Texture1.fsh</file>
+        <file>Shaders/Texture1.vsh</file>
+        <file>Shaders/Color.fsh</file>
+        <file>Shaders/Color.vsh</file>
+        <file>Shaders/BloomMap.fsh</file>
+        <file>Shaders/Bloom.fsh</file>
+        <file>Shaders/Blur.fsh</file>
+        <file>Shaders/Light_.vsh</file>
+        <file>Shaders/Light_OmniOmni.fsh</file>
+        <file>Shaders/Light_SpotSpot.fsh</file>
+        <file>Shaders/Light_OmniSpot.fsh</file>
+        <file>Shaders/ColoredPart.fsh</file>
+        <file>Shaders/Light_OmniOmni_Specular.fsh</file>
+        <file>Shaders/Light_OmniSpot_Specular.fsh</file>
+        <file>Shaders/Light_SpotSpot_Specular.fsh</file>
+        <file>Shaders/Refraction_FallOff.fsh</file>
+        <file>Shaders/Refraction_FallOff.vsh</file>
+        <file>Shaders/Sphere_OmniOmni.fsh</file>
+        <file>Shaders/Sphere_.vsh</file>
+        <file>Shaders/Sphere_OmniSpot.fsh</file>
+        <file>Shaders/Sphere_SpotSpot.fsh</file>
+        <file>Shaders/Sphere_Texture1.fsh</file>
+    </qresource>
+</RCC>

@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>Dialog_SelectScene.qml</file>
+    </qresource>
+</RCC>
