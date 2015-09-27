@@ -186,30 +186,30 @@ void ScenePigPetr::slotBeginDrawing()
 {
     using namespace QScrollEngine;
     QScrollEngineContext* context = parentContext();
-    glEnable(GL_STENCIL_TEST);
-    glStencilFunc(GL_ALWAYS, 0, 1);
-    glStencilOp(GL_REPLACE, GL_REPLACE, GL_REPLACE);
-    glClearStencil(0);
-    glClear(GL_STENCIL_BUFFER_BIT);
-    glStencilFunc(GL_ALWAYS, 1, 1);
-    glStencilOp(GL_KEEP, GL_KEEP, GL_REPLACE);
-    glColorMask(GL_FALSE, GL_FALSE, GL_FALSE, GL_FALSE);
-    glDepthMask(GL_FALSE);
+    context->glEnable(GL_STENCIL_TEST);
+    context->glStencilFunc(GL_ALWAYS, 0, 1);
+    context->glStencilOp(GL_REPLACE, GL_REPLACE, GL_REPLACE);
+    context->glClearStencil(0);
+    context->glClear(GL_STENCIL_BUFFER_BIT);
+    context->glStencilFunc(GL_ALWAYS, 1, 1);
+    context->glStencilOp(GL_KEEP, GL_KEEP, GL_REPLACE);
+    context->glColorMask(GL_FALSE, GL_FALSE, GL_FALSE, GL_FALSE);
+    context->glDepthMask(GL_FALSE);
     _pathViewQuad->updateTransform();
     _pathViewQuad->updateMatrxWorldViewProj(context->camera->matrixViewProj());
     _pathViewQuad->draw(context);
-    glStencilOp(GL_KEEP, GL_KEEP, GL_KEEP);
-    glStencilFunc(GL_NOTEQUAL, 0, 1);
-    glEnable(GL_DEPTH_TEST);
-    glColorMask(GL_TRUE, GL_TRUE, GL_TRUE, GL_TRUE);
-    glDepthMask(GL_TRUE);
+    context->glStencilOp(GL_KEEP, GL_KEEP, GL_KEEP);
+    context->glStencilFunc(GL_NOTEQUAL, 0, 1);
+    context->glEnable(GL_DEPTH_TEST);
+    context->glColorMask(GL_TRUE, GL_TRUE, GL_TRUE, GL_TRUE);
+    context->glDepthMask(GL_TRUE);
     _path[0]->updateTransform();
     _path[0]->updateMatrxWorldViewProj(context->camera->matrixViewProj());
     _path[0]->part(0)->draw(context);
     _path[1]->updateTransform();
     _path[1]->updateMatrxWorldViewProj(context->camera->matrixViewProj());
     _path[1]->part(0)->draw(context);
-    glDisable(GL_STENCIL_TEST);
+    context->glDisable(GL_STENCIL_TEST);
 }
 
 void ScenePigPetr::slotEndDrawing()

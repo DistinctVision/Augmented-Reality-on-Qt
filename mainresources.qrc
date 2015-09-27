@@ -2,5 +2,6 @@
     <qresource prefix="/">
         <file>main.qml</file>
         <file>Dialog_SelectScene.qml</file>
+        <file>Dialog_SelectCamera.qml</file>
     </qresource>
 </RCC>

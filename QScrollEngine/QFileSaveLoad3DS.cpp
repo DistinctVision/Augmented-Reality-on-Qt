@@ -482,7 +482,7 @@ void QFileSaveLoad3DS::_writeTextures(QScrollEngineContext* context, const QStri
             qDebug() << QString("QScrollEngine: Error. Failed to use frame buffer for texture - '") + _textureInfo[i].name + "'.";
             continue;
         }
-        glReadPixels(0, 0, texture->width(), texture->height(), GL_RGBA, GL_UNSIGNED_BYTE, data);
+        context->glReadPixels(0, 0, texture->width(), texture->height(), GL_RGBA, GL_UNSIGNED_BYTE, data);
         image = QImage(data, texture->width(), texture->height(), QImage::Format_RGBA8888);
         if (!image.save(textureDir + _textureInfo[i].name)) {
             qDebug() << QString("QStrollEngine: Error. Failed to save the texture - '") + _textureInfo[i].name +

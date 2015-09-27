@@ -183,21 +183,18 @@ bool HomographyInitializer::_computeDecompositionsHomography()
     };
 
     const float e1[4] = {1.0f, -1.0f,  1.0f, -1.0f};
-    const float e3[4] = {1.0f,  1.0f, -1.0f, -1.0f};
+    const float e2[4] = {1.0f,  1.0f, -1.0f, -1.0f};
 
-    TMath::TVector<float> a;
     _decompositions.resize(8);
     TMath::TVector<float> np(3), tp(3);
 
-    QMatrix3x3 m;
-    QVector3D t;
     // Case 1, d' > 0:
     float D = s * prime_PM;
     for(int signs=0; signs<4; ++signs) {
         HomographyDecomposition& decomposition = _decompositions[signs];
 
         decomposition.D = D;
-        float sinTheta = (w1 - w3) * x1_PM * x3_PM * e1[signs] * e3[signs] / w2;
+        float sinTheta = (w1 - w3) * x1_PM * x3_PM * e1[signs] * e2[signs] / w2;
         float cosTheta = (w1 * x3_PM * x3_PM + w3 * x1_PM * x1_PM) / w2;
         decomposition.rotation.recreate(3, 3);
         decomposition.rotation.setToIdentity();
@@ -208,23 +205,15 @@ bool HomographyInitializer::_computeDecompositionsHomography()
 
         tp(0) = (w1 - w3) * x1_PM * e1[signs];
         tp(1) = 0.0f;
-        tp(2) = - (w1 - w3) * x3_PM * e3[signs];
+        tp(2) = - (w1 - w3) * x3_PM * e2[signs];
 
         np(0) = x1_PM * e1[signs];
         np(1) = x2;
-        np(2) = x3_PM * e3[signs];
+        np(2) = x3_PM * e2[signs];
         decomposition.n = V * np;
 
         decomposition.rotation = U * decomposition.rotation * V.refTransposed() * s;
         decomposition.translate = U * tp;
-
-        for (int i=0; i<3; ++i) {
-            for (int j=0; j<3; ++j) {
-                m(i, j) = decomposition.rotation(i, j);
-            }
-            t[i] = decomposition.translate(i);
-        }
-        t.x();
     }
     // Case 1, d' < 0:
     D = - s * prime_PM;
@@ -232,7 +221,7 @@ bool HomographyInitializer::_computeDecompositionsHomography()
         HomographyDecomposition& decomposition = _decompositions[signs + 4];
 
         decomposition.D = D;
-        float sinPhi = (w1 + w3) * x1_PM * x3_PM * e1[signs] * e3[signs] / w2;
+        float sinPhi = (w1 + w3) * x1_PM * x3_PM * e1[signs] * e2[signs] / w2;
         float cosPhi = (w3 * x1_PM * x1_PM - w1 * x3_PM * x3_PM) / w2;
         decomposition.rotation.recreate(3, 3);
         decomposition.rotation.setToIdentity();
@@ -244,23 +233,15 @@ bool HomographyInitializer::_computeDecompositionsHomography()
 
         tp(0) = (w1 + w3) * x1_PM * e1[signs];
         tp(1) = 0.0f;
-        tp(2) = (w1 + w3) * x3_PM * e3[signs];
+        tp(2) = (w1 + w3) * x3_PM * e2[signs];
 
         np(0) = x1_PM * e1[signs];
         np(1) = x2;
-        np(2) = x3_PM * e3[signs];
+        np(2) = x3_PM * e2[signs];
         decomposition.n = V * np;
 
         decomposition.rotation = U * decomposition.rotation * V.refTransposed() * s;
         decomposition.translate = U * tp;
-
-        for (int i=0; i<3; ++i) {
-            for (int j=0; j<3; ++j) {
-                m(i, j) = decomposition.rotation(i, j);
-            }
-            t[i] = decomposition.translate(i);
-        }
-        t.x();
     }
     return true;
 }

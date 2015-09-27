@@ -10,11 +10,12 @@ Rectangle {
 
     Camera {
         id: camera
-        captureMode: Camera.CaptureVideo
+
+        /*captureMode: Camera.CaptureVideo
         videoRecorder {
             resolution: "640x480"
             frameRate: 30
-        }
+        }*/
     }
 
     ARCameraItem {
@@ -316,6 +317,16 @@ Rectangle {
             onClicked: {
                 arCameraItem.deleteScene();
             }
+        }
+    }
+
+    Dialog_SelectCamera {
+        anchors.fill: parent
+
+        onClickItem: {
+            camera.stop();
+            camera.deviceId = deviceId;
+            camera.start();
         }
     }
 

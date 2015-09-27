@@ -178,7 +178,6 @@ SceneSpace::SceneSpace(QScrollEngine::QScrollEngineContext* context, int order)
     scale = QVector3D(0.6667f, 0.6667f, 0.6667f);
     OrbitShader orbitShaderSample;
     context->registerShader(&orbitShaderSample);
-    context->setPostEffectUsed(false);
     _planarShadows.setScene(this);
     _planarShadows.setColorShadows(QColor(0, 0, 0, 55));
     _planarShadows.setAlpha(true);

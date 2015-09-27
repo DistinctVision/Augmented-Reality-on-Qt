@@ -26,10 +26,10 @@ bool QSh_Sphere_Texture1::use(QScrollEngineContext* context, QOpenGLShaderProgra
     program->setUniformValue(locationTexture0, 0);
     context->glActiveTexture(GL_TEXTURE0);
     context->glBindTexture(GL_TEXTURE_2D, (_texture0) ? _texture0->textureId() : context->emptyTexture()->textureId());
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_MIRRORED_REPEAT);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_MIRRORED_REPEAT);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    context->glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_MIRRORED_REPEAT);
+    context->glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_MIRRORED_REPEAT);
+    context->glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    context->glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     program->setUniformValue(locationViewPosition, scene->cameraPosition());
     program->setUniformValue(locationSphereCenter, _sceneObject->globalPosition());
     program->setUniformValue(locationSphereMatrixRotation, _sphereMatrixRotation);

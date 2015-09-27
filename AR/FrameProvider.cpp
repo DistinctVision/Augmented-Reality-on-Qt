@@ -94,7 +94,7 @@ void FrameProvider::setHandleTexture(QScrollEngine::QScrollEngineContext* contex
     }
     _needToDeleteTexture = false;
     _handleSourceTexture = handleTexture;
-    glBindTexture(GL_TEXTURE_2D, _handleSourceTexture);
+    _context->glBindTexture(GL_TEXTURE_2D, _handleSourceTexture);
     _originalTextureSize.x = static_cast<GLuint>(textureWidth);
     _originalTextureSize.y = static_cast<GLuint>(textureHeight);
 }
@@ -179,7 +179,7 @@ void FrameProvider::getLuminanceImage(QOpenGLFunctions* glFunctions, Image<uchar
 {
     QTime timer;
     timer.start();
-    glDisable(GL_BLEND);
+    glFunctions->glDisable(GL_BLEND);
     glFunctions->glViewport(0, 0, image.width() / 4, image.height());
     _shaderLuminace.setUniformValue(_locationTexelX_luminance, 1.0f / static_cast<float>(image.width()));
     glFunctions->glDrawArrays(GL_TRIANGLE_FAN, 0, 4);

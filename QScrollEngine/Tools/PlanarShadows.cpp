@@ -111,30 +111,30 @@ void PlanarShadows::draw()
     camera->update();
     _calculateMatrixShadow();
     if (_isAlpha) {
-        glDepthMask(GL_FALSE);
-        glEnable(GL_STENCIL_TEST);
-        glColorMask(GL_FALSE, GL_FALSE, GL_FALSE, GL_FALSE);
-        glStencilFunc(GL_ALWAYS, 0, 1);
-        glStencilOp(GL_REPLACE, GL_REPLACE, GL_REPLACE);
-        glClearStencil(0);
-        glClear(GL_STENCIL_BUFFER_BIT);
-        glStencilFunc(GL_ALWAYS, 1, 1);
-        glStencilOp(GL_KEEP, GL_KEEP, GL_REPLACE);
+        _parentContext->glDepthMask(GL_FALSE);
+        _parentContext->glEnable(GL_STENCIL_TEST);
+        _parentContext->glColorMask(GL_FALSE, GL_FALSE, GL_FALSE, GL_FALSE);
+        _parentContext->glStencilFunc(GL_ALWAYS, 0, 1);
+        _parentContext->glStencilOp(GL_REPLACE, GL_REPLACE, GL_REPLACE);
+        _parentContext->glClearStencil(0);
+        _parentContext->glClear(GL_STENCIL_BUFFER_BIT);
+        _parentContext->glStencilFunc(GL_ALWAYS, 1, 1);
+        _parentContext->glStencilOp(GL_KEEP, GL_KEEP, GL_REPLACE);
         program->setUniformValue(QSh_Color::locationColor, QColor(0, 0, 0, 255));
         for (std::set<QEntity*>::iterator it = _entities.begin(); it != _entities.end(); ++it)
             _drawShadowOfEntity(program, camera, *it);
-        glColorMask(GL_TRUE, GL_TRUE, GL_TRUE, GL_TRUE);
-        //glDepthMask(GL_FALSE);
-        glDisable(GL_DEPTH_TEST);
-        glEnable(GL_BLEND);
-        glStencilFunc(GL_NOTEQUAL, 0, 1);
-        glStencilOp(GL_KEEP, GL_KEEP, GL_KEEP);
+        _parentContext->glColorMask(GL_TRUE, GL_TRUE, GL_TRUE, GL_TRUE);
+        //_parentContext->glDepthMask(GL_FALSE);
+        _parentContext->glDisable(GL_DEPTH_TEST);
+        _parentContext->glEnable(GL_BLEND);
+        _parentContext->glStencilFunc(GL_NOTEQUAL, 0, 1);
+        _parentContext->glStencilOp(GL_KEEP, GL_KEEP, GL_KEEP);
         program->setUniformValue(QSh_Color::locationColor, _colorShadows);
         program->setUniformValue(QSh_Color::locationMatrixWVP, _parentContext->screenQuadMatrix());
         _parentContext->drawMesh(GL_TRIANGLES, _parentContext->screenQuad(), program);
-        glEnable(GL_DEPTH_TEST);
-        glDisable(GL_STENCIL_TEST);
-        glDepthMask(GL_TRUE);
+        _parentContext->glEnable(GL_DEPTH_TEST);
+        _parentContext->glDisable(GL_STENCIL_TEST);
+        _parentContext->glDepthMask(GL_TRUE);
     } else {
         program->setUniformValue(QSh_Color::locationColor, QColor(_colorShadows.red(), _colorShadows.green(), _colorShadows.blue(), 255));
         for (std::set<QEntity*>::iterator it = _entities.begin(); it != _entities.end(); ++it)

@@ -29,10 +29,10 @@ bool QSh_Refraction_FallOff::use(QScrollEngineContext* context, QOpenGLShaderPro
     program->setUniformValue(locationScreenTexture, 0);
     context->glActiveTexture(GL_TEXTURE0);
     context->glBindTexture(GL_TEXTURE_2D, _screenTexture);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_MIRRORED_REPEAT);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_MIRRORED_REPEAT);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    context->glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_MIRRORED_REPEAT);
+    context->glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_MIRRORED_REPEAT);
+    context->glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    context->glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     program->setUniformValue(locationRefract, _refract);
     program->setUniformValue(locationFallOffColor, QVector3D(_fallOffColor.redF(), _fallOffColor.greenF(), _fallOffColor.blueF()));
     program->setUniformValue(locationFallOffIntensity, _fallOffInt);

@@ -320,7 +320,8 @@ public:
             _data[i * _cols + i] = diagonal(i);
     }
     void setZero() { const int size = _rows * _cols; for (int i=0; i<size; ++i) _data[i] = (Type)0; }
-    inline TMatrix(int rows, int cols):_rows(rows), _cols(cols), _data(new Type[rows * cols]) { TMath_assert((_rows > 0) && (_cols > 0)); }
+    inline TMatrix(int rows, int cols):_rows(rows), _cols(cols), _data(new Type[rows * cols])
+                    { TMath_assert((_rows > 0) && (_cols > 0)); }
     TMatrix(const TMatrix& matrix)
     {
         _rows = matrix._rows;
