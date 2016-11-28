@@ -1,0 +1,15 @@
+<RCC>
+    <qresource prefix="/">
+        <file>QML/ARUtils.qml</file>
+        <file>QML/CalibrationWindow.qml</file>
+        <file>QML/Dialog_SelectDevice.qml</file>
+        <file>QML/main.qml</file>
+        <file>QML/main_android.qml</file>
+        <file>QML/PerformanceMonitor.qml</file>
+        <file>QML/ShineButton.qml</file>
+        <file>QML/TrackerWindow.qml</file>
+        <file>QML/ShipWindow.qml</file>
+        <file>QML/SpaceWindow.qml</file>
+        <file>QML/TrackingUI.qml</file>
+    </qresource>
+</RCC>

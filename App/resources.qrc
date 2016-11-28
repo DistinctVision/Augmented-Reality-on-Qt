@@ -1,0 +1,23 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Data/CompanionCube.jpg</file>
+        <file>Data/cube.3DS</file>
+        <file>Data/ship.3DS</file>
+        <file>Data/Cloud.jpg</file>
+        <file>Data/SmokeParticle_0.jpg</file>
+        <file>Data/SmokeParticle_1.jpg</file>
+        <file>Data/SmokeParticle_2.jpg</file>
+        <file>Data/SmokeParticle_3.jpg</file>
+        <file>Data/Glow.png</file>
+        <file>Data/Sun.jpg</file>
+        <file>Data/Mercury.jpg</file>
+        <file>Data/Venus.jpg</file>
+        <file>Data/Earth.png</file>
+        <file>Data/EarthCloud.png</file>
+        <file>Data/Mars.jpg</file>
+        <file>Data/eye.jpg</file>
+        <file>Data/petr.3DS</file>
+        <file>Data/back.png</file>
+        <file>Data/linearGradient.png</file>
+    </qresource>
+</RCC>

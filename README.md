@@ -1,2 +1,2 @@
 # Augmented reality on Qt
-augmented reality on Qt.
+Crossplatform augmented reality on Qt.
